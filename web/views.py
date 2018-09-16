@@ -6,7 +6,6 @@ from django.http import Http404
 from django.utils import timezone
 from django.conf import settings
 # from rest_framework.response import Response
-from common.models import Settings
 from common.forms import ProfileForm
 from project.models import Project
 from project.forms import ProjectForm
@@ -71,24 +70,7 @@ def index(request):
     :param request: Django request
     :return: Rendered HTML
     """
-    project_settings = Settings.objects.all()[0]
-    local_time = timezone.localtime(timezone.now())
-    vote_time = project_settings.vote_start_time.astimezone(
-        pytz.timezone(getattr(settings, "TIME_ZONE", 'Asia/Baku')))
-
-    end_time = project_settings.vote_end_time.astimezone(
-        pytz.timezone(getattr(settings, "TIME_ZONE", 'Asia/Baku')))
-
-    vote_start_str = convert_time_to_str(vote_time)
-    vote_end_str = convert_time_to_str(end_time)
-
-    data = {
-        'vote_time': vote_start_str,
-        'vote_left': int((vote_time - local_time).total_seconds()),
-        'end_time': vote_end_str,
-        'end_left': int((end_time - local_time).total_seconds())
-    }
-    return render(request, 'web/index.html', data)
+    return render(request, 'web/index.html', {})
 
 
 def projects(request, pk=None):

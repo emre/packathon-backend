@@ -41,15 +41,3 @@ class ApiPagination(PageNumberPagination):
     """
     page_size = 100
     page_size_query_param = 'page_size'
-
-
-class Settings(models.Model):
-    """
-    Simple Module for storing dynamic settings variables as plugins are buggy
-    """
-    vote_start_time = models.DateTimeField(auto_now=False, blank=False, null=False)
-    vote_end_time = models.DateTimeField(auto_now=False, blank=False, null=False)
-
-    class Meta:
-        verbose_name = _("Setting")
-        verbose_name_plural = _("Settings")

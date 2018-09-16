@@ -7,16 +7,7 @@
 <div class="header-content-wrap">
   <div class="container">
     <h1 class="intro-text">
-      <time id="time-left">{{ vote_time }}</time><br/>
-      {% if vote_left > 0 %}
-      <small style="color: #e8e8e8">{% blocktrans %}Vote begins at {{ vote_time }}{% endblocktrans %}</small>
-      {% elif end_left > 0 %}
-      <small style="color: #e8e8e8">{% blocktrans %}Vote ends at {{ end_time }}{% endblocktrans %}</small>
-      {% else %}
-      <small style="color: #e8e8e8">{% blocktrans %}Vote ended at {{ end_time }}{% endblocktrans %}</small>
-      {% endif %}
-      <time hidden class="hidden" id="time-left-sec">{{ vote_left }}</time>
-      <time hidden class="hidden" id="vote-left-sec">{{ end_left }}</time>
+        Utopian Hackathon 2018
     </h1>
     <div class="buttons">
       <a href="/teams/" class="btn btn-primary custom-button blue-btn"><i class="fa fa-users"></i> {% trans "Teams" %}</a>

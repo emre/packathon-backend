@@ -7,7 +7,6 @@ from rest_framework.response import Response
 from project.serializers import ProjectSerializer
 from project.models import Project
 from team.models import Team
-from common.models import Settings
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
@@ -38,11 +37,6 @@ class ProjectViewSet(viewsets.ModelViewSet):
         :param pk: Project id
         :return: json
         """
-        project_settings = Settings.objects.all()[0]
-        if localtime(now()) < project_settings.vote_start_time:
-            return Response({'status': False, 'message': _('Vote not started yet')}, 409)
-        if localtime(now()) > project_settings.vote_end_time:
-            return Response({'status': False, 'message': _('Vote ended')}, 409)
         try:
             project = Project.objects.get(pk=pk)
         except Project.DoesNotExist:

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from common.models import Hacker, Settings
+from common.models import Hacker
 from django.contrib.auth.admin import UserAdmin
 
 
@@ -22,10 +22,4 @@ class HackerAdmin(UserAdmin):
         }),
     )
 
-
-class SettingsAdmin(admin.ModelAdmin):
-    pass
-
-
-admin.site.register(Settings, SettingsAdmin)
 admin.site.register(Hacker, HackerAdmin)
