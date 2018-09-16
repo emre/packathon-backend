@@ -56,7 +56,7 @@
   			    <span class="icon-bar"></span>
   				  <span class="icon-bar"></span>
   				</button>
-					<a href="/" class="navbar-brand"><img src="{% static "img/packathon.png" %}" alt="Home Page"></a>
+					<a href="/" class="navbar-brand"><img src="https://utopian.rocks/static/utopian_mascot.png" alt="Home Page"></a>
   			</div>
 				<nav class="navbar-collapse bs-navbar-collapse collapse" role="navigation">
           {% block nav %}{% endblock %}
@@ -106,31 +106,19 @@
         <div class="icon-top red-text">
           <img src="{% static 'img/map25-redish.png' %}" alt="" />
         </div>
-        Bahçeşehir Üniversitesi, Çırağan Caddesi, Osmanpaşa Mektebi Sokak No: 4 - 6, 34349 Beşiktaş / İstanbul
+Via San Cerbone O della Fornace, 755, 55100 Lucca LU, Italy
       </div>
       <div class="col-md-4 company-details">
         <div class="icon-top green-text">
           <img src="{% static 'img/envelope4-green.png' %}" alt="" />
         </div>
-        <a href="mailto:info@packathon.org">info@packathon.org</a><br/>
-        <form action="{% url 'set_language' %}" method="post" class="switch-lang-form" name="switchLanguageForm">{% csrf_token %}
-            <input name="next" type="hidden" value="{{ redirect_to }}" />
-            <select name="language" onChange="switchLanguageForm.submit();">
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-                        {{ language.name_local }} ({{ language.code }})
-                    </option>
-                {% endfor %}
-            </select>
-        </form>
+        <a href="mailto:info@utopian.io">info@utopian.io</a><br/>
+
       </div>
       <div class="col-md-4 copyright">
         <ul class="social">
           <li>
-            <a target="_blank" href="https://twitter.com/packathonorg"><i class="fa fa-twitter"></i></a>
+            <a target="_blank" href="https://twitter.com/utopian_io"><i class="fa fa-twitter"></i></a>
           </li>
           <li>
             <a target="_blank" href="https://www.pyninjas.com/"><img src="{% static 'img/pyninjas.png' %}" alt=""></a>
@@ -140,7 +128,7 @@
           Theme: <a class="zerif-copyright" href="http://themeisle.com/themes/zerif-lite/" target="_blank" rel="nofollow">Zerif Lite</a>
         </div>
         <div class="zerif-copyright-box">
-          App: <a class="zerif-copyright" href="https://github.com/pyninjas/" target="_blank">pyninjas</a>
+          App: <a class="zerif-copyright" href="https://github.com/emre/packathon-backend" target="_blank">packathon-backend</a>
         </div>
       </div>
     </div> <!-- / END CONTAINER -->
