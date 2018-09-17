@@ -171,11 +171,11 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
-PARSE_APPLICATION_ID = "ID-TODO"
-PARSE_APPLICATION_KEY = "Key-TODO"
 
-try:
-    from local_settings import *
-except ImportError as e:
-    if "local_settings" not in str(e):
-        raise e
+AUTHENTICATION_BACKENDS = [
+    'common.auth_backend.SteemConnectBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+from .local_settings import *
+

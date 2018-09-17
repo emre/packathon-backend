@@ -17,49 +17,30 @@
 {% block content %}
 <section class="our-team" id="team">
   <div class="container">
-    <div class="section-header">
-      <h2 class="dark-text">{% trans "Edit Profile" %}</h2>
-      <div class="section-legend">{% trans "For username and email changes please, ask administration" %}</div>
-    </div>
     <div data-sr-complete="true" data-sr-init="true" class="row" data-scrollreveal="enter left after 0s over 0.1s">
       <div class="col-lg-12 col-sm-12 team-box">
         <div class="team-member">
           <figure class="profile-pic">
             <a href="https://www.gravatar.com" target="_blank">
-              <img src="{% gravatar_url user.email 256 %}" alt="Gravatar image">
+              <img src="https://steemitimages.com/u/{{ user.username }}/avatar">
             </a>
           </figure>
           <div class="member-details">
             <h3 class="dark-text red-border-bottom">{{ form.name.value }}</h3>
-            {% if user.description %}
-              <div class="position">{{ user.description }}</div>
+            {% if user.profile_about %}
+              <div class="position">{{ user.profile_about }}</div>
             {% else %}
-              <div class="position">{% trans "Packathon Participant" %}</div>
+              <div class="position">Hackathon Participant</div>
             {% endif %}
           </div>
           <div class="social-icons">
             <ul>
-              {% if user.git %}
+              {% if user.profile_location %}
               <li>
-                <a href="{{ user.git }}" target="_blank"><i class="fa fa-git"></i></a>
-              </li>
-              {% endif %}
-              {% if user.twitter %}
-              <li>
-                <a href="{{ user.twitter }}" target="_blank"><i class="fa fa-twitter-square"></i></a>
-              </li>
-              {% endif %}
-              {% if user.website %}
-              <li>
-                <a href="{{ user.website }}" target="_blank"><i class="fa fa-link"></i></a>
+                {{ user.profile_location }}
               </li>
               {% endif %}
             </ul>
-          </div>
-          <div class="profile-edit-button">
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#profileEditModal">
-                  <i class="fa fa-pencil-square-o"></i> {% trans "Edit info" %}
-              </button>
           </div>
         </div>
       </div>

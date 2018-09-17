@@ -5,27 +5,14 @@ from django.contrib.auth import get_user_model
 from django.http import Http404
 from django.utils import timezone
 from django.conf import settings
-# from rest_framework.response import Response
 from common.forms import ProfileForm
+from common import get_sc_client
 from project.models import Project
 from project.forms import ProjectForm
 from team.models import Team
 from feed.models import Feed
-import pytz
 
-
-def convert_time_to_str(vote_time):
-    vote_time_str = ''
-    if vote_time.hour < 10:
-        vote_time_str += '0' + str(vote_time.hour)
-    else:
-        vote_time_str += str(vote_time.hour)
-    vote_time_str += ':'
-    if vote_time.minute < 10:
-        vote_time_str += '0' + str(vote_time.minute)
-    else:
-        vote_time_str += str(vote_time.minute)
-    return vote_time_str
+from steemconnect.client import Client
 
 
 def get_user(email):
@@ -41,27 +28,27 @@ def login_view(request):
     :param request: Django Request
     :return: Rendered HTML
     """
-    data = {'error': None}
-    if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        next_url = request.POST['next']
-        if not email or not password:
-            return render(request, 'web/login.html', {'error': _('Missing Fields')})
-        username = get_user(email)
-        if not username:
-            return render(request, 'web/login.html', {'error': _('User not found')})
-        username = username.username
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                return redirect(next_url)
-            else:
-                return render(request, 'web/login.html', {'error': _('Account Disabled')})
+
+    if 'access_token' not in request.GET:
+
+        login_url = get_sc_client().get_login_url(
+            redirect_uri=settings.SC_REDIRECT_URI,
+            scope="login",
+        )
+        return redirect(login_url)
+
+    user = authenticate(access_token=request.GET.get("access_token"))
+
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return redirect('/')
         else:
-            return render(request, 'web/login.html', {'error': _('Invalid login details')})
-    return render(request, 'web/login.html', data)
+            return render(request, 'web/login.html',
+                          {'error': ('Account Disabled')})
+    else:
+        return render(request, 'web/login.html',
+                      {'error': ('Invalid login details')})
 
 
 def index(request):

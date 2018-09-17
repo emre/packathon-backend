@@ -7,18 +7,13 @@ class HackerAdmin(UserAdmin):
     """
     Custom user in Django Admin
     """
-    list_display = ('__str__', 'username', 'name', 'team',)
-    readonly_fields = ['voted_for']
-    list_filter = ('team',)
+    list_display = ('__str__', 'username', 'name',)
     fieldsets = (
         ('Account Info', {
-            'fields': ('username', 'name', 'email', 'team', 'is_staff',)
+            'fields': ('username', 'name', 'team', 'is_staff',)
         }),
         ('Extra Details', {
-            'fields': ('description', 'website', 'git', 'twitter',)
-        }),
-        ('Password', {
-            'fields': ('password',)
+            'fields': ('profile_about', 'profile_location', 'profile_image',)
         }),
     )
 

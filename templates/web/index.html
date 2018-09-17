@@ -23,14 +23,12 @@
 {% block content %}
 <section class="focus" id="focus">
   <div class="container">
-    <!-- SECTION HEADER -->
     <div class="section-header">
-      <!-- SECTION TITLE -->
       <h2 class="dark-text">
-        {% comment %}Slogan at homepage{% endcomment %}{% trans "EVETHING IS TECHNOLOGY" %}
+       Open Source and STEEM
       </h2>
       <div class="section-legend">
-        {% trans "Check applications, vote for your favourites" %}
+        Develop open-source applications around these two themes and join the fun!
       </div>
     </div>
     <div class="row">
@@ -40,9 +38,9 @@
             <i class="pixeden" style="background:url({% static 'img/website.png' %}) no-repeat center;width:100%; height:100%;"></i> <!-- FOCUS ICON-->
           </a>
         </div>
-        <h3 class="red-border-bottom">{% trans "WEB" %}</h3>
+        <h3 class="red-border-bottom">WHEN?</h3>
         <!-- FOCUS HEADING -->
-          <p>{% trans "Check news and vote using web interface" %}</p>
+          <p> The hackathon will launch on September 20th 6:00 am UTC and will end on September 21st 6:00 am UTC.</p>
       </div>
       <div class="col-lg-3 col-sm-3 focus-box" data-scrollreveal="enter left after 0.15s over 1s">
         <div class="service-icon">
@@ -50,9 +48,11 @@
             <i class="pixeden" style="background:url({% static 'img/android.png' %}) no-repeat center;width:100%; height:100%;"></i> <!-- FOCUS ICON-->
           </a>
         </div>
-        <h3 class="red-border-bottom">{% trans "Android" %}</h3>
+        <h3 class="red-border-bottom">{% trans "Where" %}</h3>
         <!-- FOCUS HEADING -->
-          <p>{% trans "Download our Android application for live push notifications and more" %}</p>
+          <p>
+              The hackathon headquarters will, of course, be at the villa the Utopian.io team will be staying at in Lucca, between Pisa and Florence. People cannot join us at Italy, may compete online!
+          </p>
       </div>
       <div class="col-lg-3 col-sm-3 focus-box" data-scrollreveal="enter left after 0.15s over 1s">
         <div class="service-icon">
@@ -60,19 +60,12 @@
             <i class="pixeden" style="background:url({% static 'img/api.png' %}) no-repeat center;width:100%; height:100%;"></i> <!-- FOCUS ICON-->
           </a>
         </div>
-        <h3 class="red-border-bottom">{% trans "API" %}</h3>
+        <h3 class="red-border-bottom">{% trans "How to Join" %}</h3>
         <!-- FOCUS HEADING -->
-        <p>{% trans "Too cool to use app? We also have api for you, use curl or what you want, have fun." %}</p>
-      </div>
+          <p>
+              RSVP here to save your spot, and be sure to indicate if you plan to attend in person or online.
+          </p>      </div>
     </div>
   </div> <!-- / END CONTAINER -->
 </section>  <!-- / END FOCUS SECTION -->
-{% endblock %}
-{% block footer_js %}
-<script type="text/javascript">
-  var Translations = {
-    "start": "{% trans 'Vote Started' %}",
-    "end": "{% trans 'Vote Ended' %}"
-  };
-</script>
 {% endblock %}
